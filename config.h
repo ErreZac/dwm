@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -33,7 +34,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,     NULL,       NULL,       0,            1,           -1 },
+	{ NULL,     NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -75,22 +76,21 @@ static const char *downvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%
 static const char *mutevol[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 
 #include "movestack.c"
-#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = filebrowser } },
-	{ MODKEY,                       XK_e,      spawn,          {.v = email } },
-	{ MODKEY,                       XK_b,      spawn,          {.v = web_browser } },
-	{ MODKEY,                       XK_o,      spawn,          {.v = octave_shell } },
-	{ MODKEY,                       XK_t,      spawn,          {.v = teams } },
-	{ MODKEY,                       XK_v,      spawn,          {.v = virtualbox } },
-	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = upvol } },
-	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = downvol } },
-	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = filebrowser } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = email } },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = web_browser } },
+	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = octave_shell } },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = teams } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = virtualbox } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = screen_capture } },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
+	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
+	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -102,9 +102,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ControlMask,           XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
