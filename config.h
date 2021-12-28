@@ -70,8 +70,12 @@ static const char *octave_shell[]  = { "st", "-e", "octave-cli", NULL };
 static const char *teams[]  = { "teams", NULL };
 static const char *virtualbox[]  = { "primusrun", "virtualbox", NULL };
 static const char *screen_capture[]  = { "scrot", NULL };
+static const char *upvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
+static const char *downvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL };
+static const char *mutevol[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 
 #include "movestack.c"
+#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
@@ -82,6 +86,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      spawn,          {.v = octave_shell } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = teams } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = virtualbox } },
+	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = upvol } },
+	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = downvol } },
+	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = screen_capture } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
