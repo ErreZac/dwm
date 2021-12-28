@@ -74,6 +74,8 @@ static const char *screen_capture[]  = { "scrot", NULL };
 static const char *upvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *downvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL };
 static const char *mutevol[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
+static const char *brightup[]  = { "asusctl", "-n", NULL };
+static const char *brightdown[]  = { "asusctl", "-p", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -90,6 +92,8 @@ static Key keys[] = {
 	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
 	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
+	{ 0,               XF86XK_KbdBrightnessUp, spawn,          {.v = brightup } },
+	{ 0,             XF86XK_KbdBrightnessDown, spawn,          {.v = brightdown } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
