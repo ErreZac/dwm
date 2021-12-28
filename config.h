@@ -11,13 +11,8 @@ static const char dmenufont[]       = "Fira Code Nerd Font:size=18";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#6272a4";
 static const char col_gray3[]       = "#bd93f9";
-static const char col_gray4[]       = "#ffb86c";
+static const char col_gray4[]       = "#6272a4";
 static const char col_cyan[]        = "#282a36";
-/*static const char col_gray1[]       = "#282a36";
-static const char col_gray2[]       = "#44475a";
-static const char col_gray3[]       = "#bd93f9";
-static const char col_gray4[]       = "#f8f8f2";
-static const char col_cyan[]        = "#6272a4";*/
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
