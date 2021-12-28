@@ -67,6 +67,9 @@ static const char *filebrowser[]  = { "thunar", NULL };
 static const char *email[]  = { "thunderbird", NULL };
 static const char *web_browser[]  = { "brave-browser", NULL };
 static const char *octave_shell[]  = { "st", "-e", "octave-cli", NULL };
+static const char *teams[]  = { "teams", NULL };
+static const char *virtualbox[]  = { "primusrun", "virtualbox", NULL };
+static const char *screen_capture[]  = { "scrot", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -77,6 +80,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = email } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = web_browser } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = octave_shell } },
+	{ MODKEY,                       XK_t,      spawn,          {.v = teams } },
+	{ MODKEY,                       XK_v,      spawn,          {.v = virtualbox } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = screen_capture } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
