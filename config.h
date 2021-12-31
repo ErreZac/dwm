@@ -12,8 +12,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code Nerd Font:size=18" };
-static const char dmenufont[]       = "Fira Code Nerd Font:size=18";
+static const char *fonts[]          = { "Fira Code Nerd Font:size=18:style=Retina" };
+static const char dmenufont[]       = "Fira Code Nerd Font:size=18:Style=Retina";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#44475a";
 static const char col_gray3[]       = "#f8f8f2";
@@ -76,6 +76,8 @@ static const char *downvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%
 static const char *mutevol[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 static const char *brightup[]  = { "asusctl", "-n", NULL };
 static const char *brightdown[]  = { "asusctl", "-p", NULL };
+static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
+static const char *rebootcmd[]  = { "sudo", "reboot", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -94,6 +96,8 @@ static Key keys[] = {
 	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
 	{ 0,               XF86XK_KbdBrightnessUp, spawn,          {.v = brightup } },
 	{ 0,             XF86XK_KbdBrightnessDown, spawn,          {.v = brightdown } },
+	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,          {.v = rebootcmd } },
+	{ MODKEY|ShiftMask|ControlMask, XK_q,      spawn,          {.v = poweroffcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
