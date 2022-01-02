@@ -12,7 +12,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code Nerd Font:size=18:style=Retina" };
+static const char *fonts[]          = {"Fira Code Nerd Font:size=18:style=Retina"};
 static const char dmenufont[]       = "Fira Code Nerd Font:size=18:Style=Retina";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#44475a";
@@ -38,7 +38,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -63,21 +63,21 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *filebrowser[]  = { "thunar", NULL };
-static const char *email[]  = { "thunderbird", NULL };
-static const char *web_browser[]  = { "brave-browser", NULL };
-static const char *octave_shell[]  = { "st", "-e", "octave-cli", NULL };
-static const char *teams[]  = { "teams", NULL };
-static const char *virtualbox[]  = { "primusrun", "virtualbox", NULL };
-static const char *screen_capture[]  = { "scrot", NULL };
-static const char *upvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
-static const char *downvol[]  = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL };
-static const char *mutevol[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
-static const char *brightup[]  = { "asusctl", "-n", NULL };
-static const char *brightdown[]  = { "asusctl", "-p", NULL };
-static const char *poweroffcmd[]  = { "sudo", "poweroff", NULL };
-static const char *rebootcmd[]  = { "sudo", "reboot", NULL };
+static const char *termcmd[] = { "st", NULL };
+static const char *filebrowser[] = { "thunar", NULL };
+static const char *email[] = { "thunderbird", NULL };
+static const char *web_browser[] = { "brave-browser", NULL };
+static const char *octave_shell[] = { "st", "-e", "octave-cli", NULL };
+static const char *teams[] = { "teams", NULL };
+static const char *virtualbox[] = { "primusrun", "virtualbox", NULL };
+static const char *screen_capture[] = { "scrot", NULL };
+static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
+static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL };
+static const char *mutevol[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
+static const char *brightup[] = { "asusctl", "-n", NULL };
+static const char *brightdown[] = { "asusctl", "-p", NULL };
+static const char *poweroffcmd[] = { "sudo", "poweroff", NULL };
+static const char *rebootcmd[] = { "sudo", "reboot", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
