@@ -78,6 +78,7 @@ static const char *brightup[] = { "asusctl", "-n", NULL };
 static const char *brightdown[] = { "asusctl", "-p", NULL };
 static const char *poweroffcmd[] = { "sudo", "poweroff", NULL };
 static const char *rebootcmd[] = { "sudo", "reboot", NULL };
+static const char *lockscr[] = { "slock", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -98,6 +99,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessDown, spawn,          {.v = brightdown } },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,          {.v = rebootcmd } },
 	{ MODKEY|ShiftMask|ControlMask, XK_q,      spawn,          {.v = poweroffcmd } },
+	{ MODKEY|ShiftMask|ControlMask, XK_l,      spawn,          {.v = lockscr } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
