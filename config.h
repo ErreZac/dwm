@@ -12,8 +12,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"Fira Code Nerd Font:size=18:style=Retina"};
-static const char dmenufont[]       = "Fira Code Nerd Font:size=18:Style=Retina";
+static const char *fonts[]          = {"JetBrainsMono Nerd Font:style=Medium:size=18"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=18";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#44475a";
 static const char col_gray3[]       = "#f8f8f2";
@@ -45,10 +45,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "🮻",      tile },    /* first entry is default */
+	{ "",      tile },    /* first entry is default */
 	{ "🗗",      NULL },    /* no layout function means floating behavior */
-	{ "🔍",      monocle },
-	{ "🮕",      grid },
+	{ "",      monocle },
+	{ "藺",      grid },
 };
 
 /* key definitions */
