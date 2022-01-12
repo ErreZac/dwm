@@ -1189,7 +1189,7 @@ killunsel(const Arg *arg)
 
 	for (i = selmon->clients; i; i = i->next) {
 		if (ISVISIBLE(i) && i != selmon->sel) {
-			if (!sendevent(i, wmatom[WMDelete])) {
+			if (!sendevent(i, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) { // ZAC modified this after killunsel merge. did not compile before, too few arguments.
 				XGrabServer(dpy);
 				XSetErrorHandler(xerrordummy);
 				XSetCloseDownMode(dpy, DestroyAll);
