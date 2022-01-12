@@ -66,6 +66,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char *filebrowser[] = { "thunar", NULL };
 static const char *email[] = { "thunderbird", NULL };
 static const char *web_browser[] = { "brave-browser", NULL };
@@ -87,6 +89,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = filebrowser } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = email } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = web_browser } },
@@ -94,11 +97,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = teams } },
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = virtualbox } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = screen_capture } },
-	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
-	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
-	{ 0,                   XF86XK_AudioMute,   spawn,          {.v = mutevol } },
-	{ 0,               XF86XK_KbdBrightnessUp, spawn,          {.v = brightup } },
-	{ 0,             XF86XK_KbdBrightnessDown, spawn,          {.v = brightdown } },
+	{ 0, XF86XK_AudioRaiseVolume,              spawn,          {.v = upvol } },
+	{ 0, XF86XK_AudioLowerVolume,              spawn,          {.v = downvol } },
+	{ 0, XF86XK_AudioMute,                     spawn,          {.v = mutevol } },
+	{ 0, XF86XK_KbdBrightnessUp,               spawn,          {.v = brightup } },
+	{ 0, XF86XK_KbdBrightnessDown,             spawn,          {.v = brightdown } },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,          {.v = rebootcmd } },
 	{ MODKEY|ShiftMask|ControlMask, XK_q,      spawn,          {.v = poweroffcmd } },
 	{ MODKEY|ShiftMask|ControlMask, XK_l,      spawn,          {.v = lockscr } },
@@ -111,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY|ControlMask,           XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_x,      killunsel,      {0} },
