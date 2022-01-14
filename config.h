@@ -14,14 +14,19 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {"JetBrainsMono Nerd Font:style=Medium:size=18"};
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=18:style:Regular";
-static const char col_gray1[]       = "#282a36";
-static const char col_gray2[]       = "#44475a";
-static const char col_gray3[]       = "#f8f8f2";
-static const char col_gray4[]       = "#6272a4";
-static const char col_cyan[]        = "#bd93f9";
+//static const char col_gray1[]       = "#282a36";
+//static const char col_gray2[]       = "#44475a";
+//static const char col_gray3[]       = "#f8f8f2";
+//static const char col_gray4[]       = "#6272a4";
+//static const char col_cyan[]        = "#bd93f9";
+static const char col_gray1[]       = "#4C566A";
+static const char col_gray2[]       = "#4C566A"; /* border color unfocused windows */
+static const char col_gray3[]       = "#2E3440";
+static const char col_gray4[]       = "#D8DEE9";
+static const char col_cyan[]        = "#ECEFF4"; /* border color focused windows and tags */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray4 },
+	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray3, col_cyan,  col_cyan},
 };
 
