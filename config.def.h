@@ -12,23 +12,21 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"JetBrainsMono Nerd Font:style=Medium:size=18"};
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=18:style:Regular";
-//static const char col_gray1[]       = "#282a36";
-//static const char col_gray2[]       = "#44475a";
-//static const char col_gray3[]       = "#f8f8f2";
-//static const char col_gray4[]       = "#6272a4";
-//static const char col_cyan[]        = "#bd93f9";
-static const char col_gray1[]       = "#4C566A";
-static const char col_gray2[]       = "#4C566A"; /* border color unfocused windows */
-static const char col_gray3[]       = "#2E3440";
-static const char col_gray4[]       = "#D8DEE9";
-//static const char col_cyan[]        = "#ECEFF4"; /* border color focused windows and tags */
-static const char col_cyan[]        = "#88C0D0"; /* border color focused windows and tags */
-static const char *colors[][3]      = {
+static const char *fonts[]          = {"JetBrainsMono Nerd Font:style=Medium:size=20"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=20:style:Regular";
+
+/*  Nord Theme */
+static const char fg_norm[]     = "#D8DEE9";
+static const char bg_norm[]     = "#2E3440";
+static const char border_norm[] = "#3B4252";
+static const char fg_sel[]      = "#ECEFF4";
+static const char bg_sel[]      = "#434C5E";
+static const char border_sel[]  = "#88C0D0";
+
+static const char *colors[][3]  = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray3, col_cyan,  col_cyan},
+	[SchemeNorm] = { fg_norm, bg_norm, border_norm },
+	[SchemeSel]  = { fg_sel,  bg_sel,  border_sel  },
 };
 
 /* tagging */
@@ -71,7 +69,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL};//, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
