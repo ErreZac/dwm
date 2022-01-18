@@ -5,7 +5,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 15;       /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
@@ -30,7 +30,9 @@ static const char *colors[][3]  = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+
+static const char *tags[] = { "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ" };
+//static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 //static const char *tags[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆", "➇", "➈" };
 
 static const Rule rules[] = {
@@ -86,6 +88,8 @@ static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-
 static const char *mutevol[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 static const char *brightup[] = { "asusctl", "-n", NULL };
 static const char *brightdown[] = { "asusctl", "-p", NULL };
+static const char *scrbrightup[] = { "/home/zac/Documents/scripts/./brightness.sh", "+", "eDP", NULL };
+static const char *scrbrightdown[] = { "/home/zac/Documents/scripts/./brightness.sh", "-", "eDP", NULL };
 static const char *poweroffcmd[] = { "sudo", "poweroff", NULL };
 static const char *rebootcmd[] = { "sudo", "reboot", NULL };
 static const char *lockscr[] = { "slock", NULL };
@@ -108,6 +112,8 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,                     spawn,          {.v = mutevol } },
 	{ 0, XF86XK_KbdBrightnessUp,               spawn,          {.v = brightup } },
 	{ 0, XF86XK_KbdBrightnessDown,             spawn,          {.v = brightdown } },
+	{ 0, XF86XK_MonBrightnessUp,           spawn,          {.v = scrbrightup } },
+	{ 0, XF86XK_MonBrightnessDown,         spawn,          {.v = scrbrightdown } },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,          {.v = rebootcmd } },
 	{ MODKEY|ShiftMask|ControlMask, XK_q,      spawn,          {.v = poweroffcmd } },
 	{ MODKEY|ShiftMask|ControlMask, XK_l,      spawn,          {.v = lockscr } },
