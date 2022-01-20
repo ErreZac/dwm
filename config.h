@@ -3,7 +3,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 15;       /* gap pixel between windows */
+static const unsigned int gappx     = 5;       /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -76,7 +76,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL};//, "-fn", 
 static const char *termcmd[] = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *filebrowser[] = { "pcmanfm", NULL };
+static const char *filebrowser[] = { "st", "-e", "ranger", NULL };
 static const char *email[] = { "thunderbird", NULL };
 static const char *web_browser[] = { "brave-browser", NULL };
 static const char *octave_shell[] = { "st", "-e", "octave-cli", NULL };
