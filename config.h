@@ -16,21 +16,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=20"};
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
-/*  Nord Theme */
-static const char fg_norm[]     = "#D8DEE9";
-static const char bg_norm[]     = "#2E3440";
-static const char border_norm[] = "#3B4252";
-static const char fg_sel[]      = "#ECEFF4";
-static const char bg_sel[]      = "#434C5E";
-static const char border_sel[]  = "#88C0D0";
-
-/*  tokyonight theme */
-//static const char fg_norm[]     = "#ebdbb2";
-//static const char bg_norm[]     = "#282828";
-//static const char border_norm[] = "#32302f";
-//static const char fg_sel[]      = "#1d2021";
-//static const char bg_sel[]      = "#ebdbb2";
-//static const char border_sel[]  = "#d65d0e"; // fe8019
+/*  Theme */                          //"nord"
+static const char fg_norm[]     = "#D9E0EE"; // "#fabd2f"; // "#D8DEE9";
+static const char bg_norm[]     = "#1E1E2E"; // "#282828"; // "#2E3440";
+static const char border_norm[] = "#575268"; // "#282828"; // "#3B4252";
+static const char fg_sel[]      = "#1E1E2E"; // "#1d2021"; // "#ECEFF4";
+static const char bg_sel[]      = "#C9CBFF"; // "#fabd2f"; // "#434C5E";
+static const char border_sel[]  = "#C9CBFF"; // "#fabd2f"; // "#88C0D0";
 
 static const char *colors[][3]  = {
 	/*               fg         bg         border   */
