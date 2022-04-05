@@ -17,12 +17,12 @@ static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-static const char fg_norm[]     = "#D9E0EE"; // "#fabd2f"; // "#D8DEE9";
+static const char fg_norm[]     = "#F8BD96"; // D9E0EE"#fabd2f"; // "#D8DEE9";
 static const char bg_norm[]     = "#1E1E2E"; // "#282828"; // "#2E3440";
 static const char border_norm[] = "#575268"; // "#282828"; // "#3B4252";
-static const char fg_sel[]      = "#1E1E2E"; // "#1d2021"; // "#ECEFF4";
-static const char bg_sel[]      = "#C9CBFF"; // "#fabd2f"; // "#434C5E";
-static const char border_sel[]  = "#C9CBFF"; // "#fabd2f"; // "#88C0D0";
+static const char fg_sel[]      = "#161320"; // "#1d2021"; // "#ECEFF4";
+static const char bg_sel[]      = "#F8BD96"; // C9CBFF"#fabd2f"; // "#434C5E";
+static const char border_sel[]  = "#F8BD96"; // "#fabd2f"; // "#88C0D0";
 
 static const char *colors[][3]  = {
 	/*               fg         bg         border   */
