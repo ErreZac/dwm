@@ -14,14 +14,14 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;    /* horizontal padding for statusbar */
-static const int vertpadbar         = 4;    /* vertical padding for statustbar */
+static const int vertpadbar         = 6;    /* vertical padding for statustbar */
 static const int tagoffset          = 20;
-static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=20"};
+static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=18"};
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
 static const char fg_norm[]     = "#fbf1c7";//"#C3BAC6"; // D9E0EE"#fabd2f"; // "#D8DEE9";
-static const char bg_norm[]     = "#555555"; //282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
+static const char bg_norm[]     = "#282828"; //282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
 static const char border_norm[] = "#928374";//"#575268"; // "#282828"; // "#3B4252";
 static const char fg_sel[]      = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
 static const char bg_sel[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
