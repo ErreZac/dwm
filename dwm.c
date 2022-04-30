@@ -466,7 +466,7 @@ arrange(Monitor *m)
 void
 arrangemon(Monitor *m)
 {
-	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
+	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol -1);//ZAC added -1 to avoid warning 
 	if (m->lt[m->sellt]->arrange)
 		m->lt[m->sellt]->arrange(m);
 }
@@ -862,11 +862,13 @@ drawbar(Monitor *m)
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
-    if (!m->showbar)
+    if (!m->showbar) {
         return;
+    }
 
-	if (showsystray && m == systraytomon(m) && !systrayonleft)
+	if (showsystray && m == systraytomon(m) && !systrayonleft) {
         stw = getsystraywidth();
+    }
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
@@ -1223,7 +1225,7 @@ killunsel(const Arg *arg)
 
 	for (i = selmon->clients; i; i = i->next) {
 		if (ISVISIBLE(i) && i != selmon->sel) {
-			if (!sendevent(i, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) { // ZAC modified this after killunsel merge. did not compile before, too few arguments.
+			if (!sendevent(i->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) { // ZAC modified this after killunsel merge. did not compile before, too few arguments.
 				XGrabServer(dpy);
 				XSetErrorHandler(xerrordummy);
 				XSetCloseDownMode(dpy, DestroyAll);
@@ -2059,7 +2061,7 @@ setlayout(const Arg *arg)
 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
 	if (arg && arg->v)
 		selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;
-	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
+	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol -1); //ZAC added -1 to avoid warining
 	if (selmon->sel)
 		arrange(selmon);
 	else
