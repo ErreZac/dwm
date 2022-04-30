@@ -21,7 +21,7 @@ static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regul
 
 /*  Theme */                          //"nord"
 static const char fg_norm[]     = "#fbf1c7";//"#C3BAC6"; // D9E0EE"#fabd2f"; // "#D8DEE9";
-static const char bg_norm[]     = "#282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
+static const char bg_norm[]     = "#555555"; //282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
 static const char border_norm[] = "#928374";//"#575268"; // "#282828"; // "#3B4252";
 static const char fg_sel[]      = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
 static const char bg_sel[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";

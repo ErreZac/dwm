@@ -881,6 +881,11 @@ drawbar(Monitor *m)
 		if (c->isurgent)
 			urg |= c->tags;
 	}
+
+    // ZAC added this to avoid balck luna
+	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_text(drw, 0, 0, tagoffset, bh, 0, " ", 0);
+
 	x = tagoffset;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
