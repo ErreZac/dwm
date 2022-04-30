@@ -2705,12 +2705,12 @@ updatesystray(void)
 	Client *i;
 	Monitor *m = systraytomon(NULL);
 	unsigned int x = m->mx + m->mw - sp;
-	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing;// -sp or +sp? not sure
+	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing;
 	unsigned int w = 1;
 
-	if (!showsystray)
+	if (!showsystray) // ZAC never checked!!!
 		return;
-	if (systrayonleft)
+	if (systrayonleft) // ZAC never checked!!!
 		x -= sw + lrpad / 2 + sp;
 	if (!systray) {
 		/* init systray */
