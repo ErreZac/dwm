@@ -1692,7 +1692,6 @@ resizebarwin(Monitor *m) {
 	if (showsystray && m == systraytomon(m) && !systrayonleft)
 		w -= getsystraywidth() + 2 * sp;
 	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, w - 2 * sp, bh);
-	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, m->ww -  2 * sp, bh);
 }
 
 void
@@ -2290,22 +2289,18 @@ togglebar(const Arg *arg)
 {
 	selmon->showbar = selmon->pertag->showbars[selmon->pertag->curtag] = !selmon->showbar;
 	updatebarpos(selmon);
-<<<<<<< HEAD
 	resizebarwin(selmon);
 	if (showsystray) {
 		XWindowChanges wc;
 		if (!selmon->showbar)
-			wc.y = -bh;
+			wc.y = -bh - vp;
 		else if (selmon->showbar) {
-			wc.y = 0;
+			wc.y = 0 + vp;
 			if (!selmon->topbar)
-				wc.y = selmon->mh - bh;
+				wc.y = selmon->mh - bh - vp;
 		}
 		XConfigureWindow(dpy, systray->win, CWY, &wc);
 	}
-=======
-	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx + sp, selmon->by + vp, selmon->ww - 2 * sp, bh);
->>>>>>> padding
 	arrange(selmon);
 }
 
