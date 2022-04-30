@@ -13,8 +13,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 2;    /* horizontal padding for statusbar */
-static const int vertpadbar         = 8;    /* vertical padding for statustbar */
+static const int horizpadbar        = 2;    /* inner horizontal padding for statusbar */
+static const int vertpadbar         = 8;    /* inner vertical padding for statustbar */
 static const int tagoffset          = 20;
 static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=18"};
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
@@ -57,7 +57,6 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
-#include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "",      tile },    /* first entry is default */
