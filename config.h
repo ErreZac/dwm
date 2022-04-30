@@ -24,7 +24,10 @@ static const char fg_sel[]      = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#1d2021"; // 
 static const char bg_sel[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
 static const char border_sel[]  = "#458588";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
 
-static const char *colors[][3]  = {
+static const int vertpad            = 10;       /* vertical padding of bar */
+static const int sidepad            = 10;       /* horizontal padding of bar */
+
+static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { fg_norm, bg_norm, border_norm },
 	[SchemeSel]  = { fg_sel,  bg_sel,  border_sel  },
