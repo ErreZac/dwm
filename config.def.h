@@ -25,7 +25,7 @@ static const char bg_sel[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // 
 static const char border_sel[]  = "#458588";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
 
 static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 10;       /* horizontal padding of bar */
+static const int sidepad            = 25;       /* horizontal padding of bar */
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */

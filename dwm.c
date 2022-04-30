@@ -871,7 +871,7 @@ drawbar(Monitor *m)
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		tw = TEXTW(stext) - lrpad / 2 + 2; /* 2px extra right padding */
-		drw_text(drw, m->ww - tw - stw - 4 * sp, 0, tw, bh, lrpad / 2 - 2, stext, 0);
+		drw_text(drw, m->ww - tw - stw - 3 * sp, 0, tw, bh, lrpad / 2 - 2, stext, 0);
 	}
 
 	resizebarwin(m);
@@ -1685,8 +1685,8 @@ void
 resizebarwin(Monitor *m) {
 	unsigned int w = m->ww;
 	if (showsystray && m == systraytomon(m) && !systrayonleft)
-		w -= getsystraywidth() + 2 * sp;
-	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, w - 2 * sp, bh);
+		w -= getsystraywidth() + sp;
+	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, w - 2*sp, bh);
 }
 
 void
@@ -2460,7 +2460,7 @@ updatebars(void)
 			continue;
 		w = m->ww;
 		if (showsystray && m == systraytomon(m))
-			w -= getsystraywidth() + 2 * sp;
+			w -= getsystraywidth() + sp;
 		m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, w - 2 * sp, bh, 0, DefaultDepth(dpy, screen),
 				CopyFromParent, DefaultVisual(dpy, screen),
 				CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
@@ -2704,8 +2704,8 @@ updatesystray(void)
 	XWindowChanges wc;
 	Client *i;
 	Monitor *m = systraytomon(NULL);
-	unsigned int x = m->mx + m->mw;
-	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing - sp;// -sp or +sp? not sure
+	unsigned int x = m->mx + m->mw - sp;
+	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing;// -sp or +sp? not sure
 	unsigned int w = 1;
 
 	if (!showsystray)
@@ -2716,7 +2716,7 @@ updatesystray(void)
 		/* init systray */
 		if (!(systray = (Systray *)calloc(1, sizeof(Systray))))
 			die("fatal: could not malloc() %u bytes\n", sizeof(Systray));
-		systray->win = XCreateSimpleWindow(dpy, root, x, m->by, w, bh, 0, 0, scheme[SchemeSel][ColBg].pixel);
+		systray->win = XCreateSimpleWindow(dpy, root, x, m->by + vp, w, bh, 0, 0, scheme[SchemeSel][ColBg].pixel);
 		wa.event_mask        = ButtonPressMask | ExposureMask;
 		wa.override_redirect = True;
 		wa.background_pixel  = scheme[SchemeNorm][ColBg].pixel;
@@ -2751,8 +2751,8 @@ updatesystray(void)
 	}
 	w = w ? w + systrayspacing : 1;
 	x -= w;
-	XMoveResizeWindow(dpy, systray->win, x - sp, m->by + vp, w, bh); // not sure
-	wc.x = x - sp; wc.y = m->by + vp; wc.width = w; wc.height = bh; // not sure
+	XMoveResizeWindow(dpy, systray->win, x, m->by + vp, w, bh); // not sure
+	wc.x = x; wc.y = m->by + vp; wc.width = w; wc.height = bh; // not sure
 	wc.stack_mode = Above; wc.sibling = m->barwin;
 	XConfigureWindow(dpy, systray->win, CWX|CWY|CWWidth|CWHeight|CWSibling|CWStackMode, &wc);
 	XMapWindow(dpy, systray->win);
