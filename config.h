@@ -25,7 +25,7 @@ static const char bg_norm[]     = "#282828"; //282828";//"#1E1E2E"; // "#282828"
 static const char border_norm[] = "#928374";//"#575268"; // "#282828"; // "#3B4252";
 static const char fg_sel[]      = "#1d2021";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
 static const char bg_sel[]      = "#83a598";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
-static const char border_sel[]  = "#83a598";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
+static const char border_sel[]  = "#fabd2f";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
 
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
