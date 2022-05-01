@@ -906,7 +906,7 @@ drawbar(Monitor *m)
 
 	if ((w = m->ww - tw - stw - x) > bh) {
 		if (m->sel) {
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+			drw_setscheme(drw, scheme[SchemeNorm]); /* ZAC previously scheme[m == selmon ? SchemeSel : SchemeNorm] */
 			drw_text(drw, x, 0, w - spc * sp, bh, lrpad / 2, m->sel->name, 0); // ZAC 2* sp maybe if not systray
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
