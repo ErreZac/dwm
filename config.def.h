@@ -3,8 +3,8 @@
 
 /* appearance */
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
-static const int startwithgaps[]    = { 25 };	/* 1 means gaps are used by default, this can be customized for each tag */
-static const unsigned int gappx[]   = { 25 };   /* default gap between windows in pixels, this can be customized for each tag */
+static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
+static const unsigned int gappx[]   = { 10 };   /* default gap between windows in pixels, this can be customized for each tag */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -28,7 +28,7 @@ static const char bg_sel[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // 
 static const char border_sel[]  = "#458588";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
 
 static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 25;       /* horizontal padding of bar */
+static const int sidepad            = 10;       /* horizontal padding of bar */
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */

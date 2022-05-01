@@ -2963,8 +2963,7 @@ grid(Monitor *m) {
 	unsigned int i, n, cx, cy, cw, ch, aw, ah, cols, rows;
 	Client *c;
 
-	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next))
-		n++;
+	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
 
 	/* grid dimensions */
 	for(rows = 0; rows <= n/2; rows++)
@@ -2973,8 +2972,8 @@ grid(Monitor *m) {
 	cols = (rows && (rows - 1) * rows >= n) ? rows - 1 : rows;
 
 	/* window geoms (cell height/width) */
-	ch = m->wh / (rows ? rows : 1) - (rows ? rows : 2) * m->pertag->gappx[m->pertag->curtag];
-	cw = m->ww / (cols ? cols : 1) - (cols ? cols : 2) * m->pertag->gappx[m->pertag->curtag];
+	ch = (m->wh - (rows ? 1 + rows : 1) * m->pertag->gappx[m->pertag->curtag]) / (rows ? rows : 1);
+	cw = (m->ww - (cols ? 1 + cols : 1) * m->pertag->gappx[m->pertag->curtag]) / (cols ? cols : 1);
 	for(i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next)) {
 		cx = m->wx + m->pertag->gappx[m->pertag->curtag] + (i / rows) * (cw + m->pertag->gappx[m->pertag->curtag]);
 		cy = m->wy + m->pertag->gappx[m->pertag->curtag] + (i % rows) * (ch + m->pertag->gappx[m->pertag->curtag]);
