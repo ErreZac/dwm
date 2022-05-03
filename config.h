@@ -48,6 +48,16 @@ static const char *colors[][3]      = {
 	[SchemeSystray]  = { fg_sys,  bg_sys,  border_sys  },
 };
 
+static const char *const autostart[] = {
+	"/home/zac/Documents/scripts/./sysinfo.sh", NULL,
+	"xrandr", "--output", "eDP", "--brightness", ".7", NULL,
+    "setxkbmap", "-option", "caps:escape", NULL,
+	"nm-applet", NULL,
+	"picom", NULL,
+    "nitrogen", "--restore", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 
 static const char *tags[] = { "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ" };
