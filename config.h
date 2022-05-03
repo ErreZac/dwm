@@ -20,17 +20,17 @@ static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-static const char fg_norm[]     = "#fbf1c7";//"#C3BAC6"; // D9E0EE"#fabd2f"; // "#D8DEE9";
-static const char bg_norm[]     = "#458588"; //282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
+static const char fg_norm[]     = "#1d2021";//"#C3BAC6"; // D9E0EE"#fabd2f"; // "#D8DEE9";
+static const char bg_norm[]     = "#83a598"; //282828";//"#1E1E2E"; // "#282828"; // "#2E3440";
 static const char border_norm[] = "#3c3836";//"#575268"; // "#282828"; // "#3B4252";
 static const char fg_sel[]      = "#1d2021";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
 static const char bg_sel[]      = "#fbf1c7";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
 static const char border_sel[]  = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
-static const char fg_txt[]      = "#1d2021";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
-static const char bg_txt[]      = "#83a598";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
+static const char fg_txt[]      = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
+static const char bg_txt[]      = "#458588";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
 static const char border_txt[]  = "#000000";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
-static const char fg_st[]       = "#1d2021";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
-static const char bg_st[]       = "#8ec07c";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
+static const char fg_st[]       = "#fbf1c7";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
+static const char bg_st[]       = "#076678";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
 static const char border_st[]   = "#000000";//"#D9E0EE"; //C9CBFF "#fabd2f"; // "#88C0D0";
 static const char fg_sys[]      = "#000000";//"#D9E0EE"; //C9CBFF "#1d2021"; // "#ECEFF4";
 static const char bg_sys[]      = "#3c3836";//"#575268"; // C9CBFF"#fabd2f"; // "#434C5E";
