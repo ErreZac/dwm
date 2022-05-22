@@ -22,6 +22,7 @@ static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regul
 /*  Theme */                          //"nord"
 #include "colorthemes/onedark.h"
 
+
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 
