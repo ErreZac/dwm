@@ -36,12 +36,13 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"/home/zac/Documents/scripts/./sysinfo.sh", NULL,
-	"xrandr", "--output", "eDP", "--brightness", ".7", NULL,
+	"/home/zac/Scripts/./sysinfo.sh", NULL,
+	"xrandr", "--output", "eDP-1", "--brightness", ".7", NULL,
     "setxkbmap", "-option", "caps:escape", NULL,
 	"nm-applet", NULL,
 	"picom", NULL,
     "nitrogen", "--restore", NULL,
+    "pasystray", NULL,
 	NULL /* terminate */
 };
 
@@ -89,7 +90,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL};//, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "st", NULL };
-static const char *todolist[] = { "st", "-e", "vim", "/home/zac/Documents/to_do_list.md", NULL };
 static const char *termtabcmd[] = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x25", NULL };
@@ -105,10 +105,10 @@ static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-
 static const char *mutevol[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 static const char *brightup[] = { "asusctl", "-n", NULL };
 static const char *brightdown[] = { "asusctl", "-p", NULL };
-static const char *scrbrightup[] = { "/home/zac/Documents/scripts/./brightness.sh", "+", "eDP", NULL };
-static const char *scrbrightdown[] = { "/home/zac/Documents/scripts/./brightness.sh", "-", "eDP", NULL };
-static const char *poweroffcmd[] = { "sudo", "poweroff", NULL };
-static const char *rebootcmd[] = { "sudo", "reboot", NULL };
+static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "eDP-1", NULL };
+static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-", "eDP-1", NULL };
+static const char *poweroffcmd[] = {"poweroff", NULL };
+static const char *rebootcmd[] = {"reboot", NULL };
 static const char *lockscr[] = { "slock", NULL };
 
 #include "movestack.c"
@@ -116,7 +116,6 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_a,      spawn,          {.v = todolist } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termtabcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = filebrowser } },
