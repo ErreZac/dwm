@@ -1132,11 +1132,11 @@ getstate(Window w)
 unsigned int
 getsystraywidth()
 {
-	unsigned int w = tagoffset;
+	unsigned int w = 0;
 	Client *i;
 	if(showsystray)
 		for(i = systray->icons; i; w += i->w + systrayspacing, i = i->next) ;
-	return w ? w + systrayspacing + tagoffset : 1;
+	return w ? w + systrayspacing + 2 * tagoffset : 1;
 }
 
 int
@@ -2714,8 +2714,8 @@ updatesystray(void)
 	XWindowChanges wc;
 	Client *i;
 	Monitor *m = systraytomon(NULL);
-	unsigned int x = m->mx + m->mw - sp;
-	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing;
+	unsigned int x = m->mx + m->mw - sp - tagoffset;
+	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing + 2 * tagoffset;
 	unsigned int w = 1;
 
 	if (!showsystray) // ZAC never checked!!!
@@ -2726,7 +2726,7 @@ updatesystray(void)
 		/* init systray */
 		if (!(systray = (Systray *)calloc(1, sizeof(Systray))))
 			die("fatal: could not malloc() %u bytes\n", sizeof(Systray));
-		systray->win = XCreateSimpleWindow(dpy, root, x, m->by + vp, w, bh, 0, 0, scheme[SchemeSel][ColBg].pixel);
+		systray->win = XCreateSimpleWindow(dpy, root, x, m->by + vp, w, bh, 0, 0, scheme[SchemeSystray][ColBg].pixel);
 		wa.event_mask        = ButtonPressMask | ExposureMask;
 		wa.override_redirect = True;
 		wa.background_pixel  = scheme[SchemeSystray][ColBg].pixel;
@@ -2747,7 +2747,7 @@ updatesystray(void)
 			return;
 		}
 	}
-	for (w = 0, i = systray->icons; i; i = i->next) {
+	for (w = tagoffset, i = systray->icons; i; i = i->next) {
 		/* make sure the background color stays the same */
 		wa.background_pixel  = scheme[SchemeSystray][ColBg].pixel;
 		XChangeWindowAttributes(dpy, i->win, CWBackPixel, &wa);
@@ -2759,17 +2759,18 @@ updatesystray(void)
 		if (i->mon != m)
 			i->mon = m;
 	}
-	w = w ? w + systrayspacing : 1;
-	x -= w;
+	w = w ? w + systrayspacing + tagoffset : 1;
+	x -= w - tagoffset;
 	XMoveResizeWindow(dpy, systray->win, x, m->by + vp, w, bh); // not sure
 	wc.x = x; wc.y = m->by + vp; wc.width = w; wc.height = bh; // not sure
 	wc.stack_mode = Above; wc.sibling = m->barwin;
 	XConfigureWindow(dpy, systray->win, CWX|CWY|CWWidth|CWHeight|CWSibling|CWStackMode, &wc);
 	XMapWindow(dpy, systray->win);
 	XMapSubwindows(dpy, systray->win);
-	/* redraw background */
-	XSetForeground(dpy, drw->gc, scheme[SchemeSystray][ColBg].pixel);
-	XFillRectangle(dpy, systray->win, XCreateGC(dpy, root, 0, NULL), 0, 0, w, bh); // ZAC hand fixed to make alpha work
+	/* redraw background ZAC biiig fix here*/
+    GC gc = XCreateGC(dpy, root, 0, NULL);
+	XSetForeground(dpy, gc, scheme[SchemeSystray][ColBg].pixel);
+	XFillRectangle(dpy, systray->win, gc, 0, 0, w, bh); // ZAC hand fixed to make alpha work
 	XSync(dpy, False);
 }
 
