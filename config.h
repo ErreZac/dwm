@@ -15,7 +15,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;    /* inner horizontal padding for statusbar */
 static const int vertpadbar         = 8;    /* inner vertical padding for statustbar */
-static const int tagoffset          = 20;
+static const int tagoffset          = 19;
 static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=18"};
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
@@ -25,6 +25,9 @@ static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regul
 
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
+
+static const unsigned int baralpha = (0xff * 0.9);
+static const unsigned int borderalpha = OPAQUE;
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -44,6 +47,14 @@ static const char *const autostart[] = {
     "nitrogen", "--restore", NULL,
     "pasystray", NULL,
 	NULL /* terminate */
+};
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeTxt]  =     { OPAQUE, baralpha, borderalpha },
+	[SchemeStatus]  =  { OPAQUE, baralpha, borderalpha },
+	[SchemeSystray]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */

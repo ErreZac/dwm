@@ -11,6 +11,6 @@ static const char fg_st[]       = "#c8ccd4";
 static const char bg_st[]       = "#0e1013";
 static const char border_st[]   = "#000000";
 static const char fg_sys[]      = "#000000";
-static const char bg_sys[]      = "#0e1013";
+static const char bg_sys[]      = "#c678dd";
 static const char border_sys[]  = "#000000";
 
