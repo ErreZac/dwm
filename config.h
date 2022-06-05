@@ -26,7 +26,7 @@ static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regul
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 
-static const unsigned int baralpha = (0xff * 0.9);
+static const unsigned int baralpha = (0xff * 0.89);
 static const unsigned int borderalpha = OPAQUE;
 
 static const char *colors[][3]      = {
