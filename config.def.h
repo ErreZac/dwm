@@ -122,7 +122,6 @@ static const char *poweroffcmd[] = {"poweroff", NULL };
 static const char *rebootcmd[] = {"reboot", NULL };
 static const char *lockscr[] = { "slock", NULL };
 
-#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
