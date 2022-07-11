@@ -124,16 +124,18 @@ static const char *lockscr[] = { "slock", NULL };
 
 static Keychord keychords[] = {
 	/* modifier                     key        function        argument */
-	{2, {{MODKEY, XK_space}, {0, XK_space}},                        spawn,          {.v = dmenucmd } },
 	{1, {{MODKEY, XK_Return}},                       spawn,          {.v = termcmd } },
 	{1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
 	{1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
-	{1, {{MODKEY|ShiftMask, XK_f}},                  spawn,          {.v = filebrowser } },
-	{1, {{MODKEY|ShiftMask, XK_e}},                  spawn,          {.v = email } },
-	{1, {{MODKEY|ShiftMask, XK_b}},                  spawn,          {.v = web_browser } },
-	{1, {{MODKEY|ShiftMask, XK_o}},                  spawn,          {.v = octave_shell } },
-	{1, {{MODKEY|ShiftMask, XK_t}},                  spawn,          {.v = teams } },
-	{1, {{MODKEY|ShiftMask, XK_v}},                  spawn,          {.v = virtualbox } },
+    /* Launch applications */
+	{2, {{MODKEY, XK_space}, {0, XK_space}},         spawn,          {.v = dmenucmd } },
+	{1, {{MODKEY, XK_space}, {0, XK_f}},             spawn,          {.v = filebrowser } },
+	{1, {{MODKEY, XK_space}, {0, XK_e}},             spawn,          {.v = email } },
+	{1, {{MODKEY, XK_space}, {0, XK_b}},             spawn,          {.v = web_browser } },
+	{1, {{MODKEY, XK_space}, {0, XK_o}},             spawn,          {.v = octave_shell } },
+	{1, {{MODKEY, XK_space}, {0, XK_t}},             spawn,          {.v = teams } },
+	{1, {{MODKEY, XK_space}, {0, XK_v}},             spawn,          {.v = virtualbox } },
+    /* other stuff */
 	{1, {{MODKEY|ShiftMask, XK_p}},                  spawn,          {.v = screen_capture } },
 	{1, {{0, XF86XK_AudioRaiseVolume}},              spawn,          {.v = upvol } },
 	{1, {{0, XF86XK_AudioLowerVolume}},              spawn,          {.v = downvol } },
