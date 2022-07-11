@@ -124,7 +124,7 @@ static const char *lockscr[] = { "slock", NULL };
 
 static Keychord keychords[] = {
 	/* modifier                     key        function        argument */
-	{1, {{MODKEY, XK_space}},                        spawn,          {.v = dmenucmd } },
+	{2, {{MODKEY, XK_space}, {0, XK_space}},                        spawn,          {.v = dmenucmd } },
 	{1, {{MODKEY, XK_Return}},                       spawn,          {.v = termcmd } },
 	{1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
 	{1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
