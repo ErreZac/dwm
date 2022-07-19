@@ -222,7 +222,6 @@ static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
-static void grid(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static void moveresize(const Arg *arg);
@@ -914,7 +913,7 @@ drawbar(Monitor *m)
         return;
     }
 
-	if (showsystray && m == systraytomon(m) && !systrayonleft) {
+	if (showsystray && m == systraytomon(m)) {
         stw = getsystraywidth();
     }
 
@@ -1856,7 +1855,7 @@ resize(Client *c, int x, int y, int w, int h, int bw, int interact)
 void
 resizebarwin(Monitor *m) {
 	unsigned int w = m->ww;
-	if (showsystray && m == systraytomon(m) && !systrayonleft)
+	if (showsystray && m == systraytomon(m))
 		w -= getsystraywidth() + sp;
 	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, w - 2*sp, bh);
 }
@@ -2225,7 +2224,7 @@ setup(void)
 	vp = (topbar == 1) ? vertpad : - vertpad;
 	updategeom();
 
-    spc = (showsystray && !systrayonleft) ? 3 : 2;
+    spc = (showsystray) ? 3 : 2;
 
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
@@ -2860,13 +2859,10 @@ updatesystray(void)
 	Client *i;
 	Monitor *m = systraytomon(NULL);
 	unsigned int x = m->mx + m->mw - sp - tagoffset;
-	unsigned int sw = TEXTW(stext) - lrpad + systrayspacing + 2 * tagoffset;
 	unsigned int w = 1;
 
 	if (!showsystray) // ZAC never checked!!!
 		return;
-	if (systrayonleft) // ZAC never checked!!!
-		x -= sw + lrpad / 2 + sp;
 	if (!systray) {
 		/* init systray */
 		if (!(systray = (Systray *)calloc(1, sizeof(Systray))))
@@ -3138,42 +3134,6 @@ zoom(const Arg *arg)
 		if (!c || !(c = nexttiled(c->next)))
 			return;
 	pop(c);
-}
-
-void
-grid(Monitor *m) {
-	unsigned int i, n, cx, cy, cw, ch, aw, ah, cols, rows, bw;
-	Client *c;
-
-	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-
-    if (n == 0) {
-        return;
-    }
-
-	if (n == 1)
-		bw = 0;
-	else
-		bw = borderpx;
-
-	/* grid dimensions */
-	for(rows = 0; rows <= n/2; rows++)
-		if(rows*rows >= n)
-			break;
-	cols = (rows && (rows - 1) * rows >= n) ? rows - 1 : rows;
-
-	/* window geoms (cell height/width) */
-	ch = (m->wh - (rows ? 1 + rows : 1) * m->pertag->gappx[m->pertag->curtag]) / (rows ? rows : 1);
-	cw = (m->ww - (cols ? 1 + cols : 1) * m->pertag->gappx[m->pertag->curtag]) / (cols ? cols : 1);
-	for(i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next)) {
-		cx = m->wx + m->pertag->gappx[m->pertag->curtag] + (i / rows) * (cw + m->pertag->gappx[m->pertag->curtag]);
-		cy = m->wy + m->pertag->gappx[m->pertag->curtag] + (i % rows) * (ch + m->pertag->gappx[m->pertag->curtag]);
-		/* adjust height/width of last row/column's windows */
-		ah = ((i + 1) % rows == 0) ? m->wh - (ch + m->pertag->gappx[m->pertag->curtag]) * rows - m->pertag->gappx[m->pertag->curtag]: 0;
-		aw = (i >= rows * (cols - 1)) ? m->ww - (cw + m->pertag->gappx[m->pertag->curtag]) * cols - m->pertag->gappx[m->pertag->curtag]: 0;
-		resize(c, cx, cy, cw - 2 * bw + aw, ch - 2 * bw + ah, bw, False);
-		i++;
-	}
 }
 
 int
