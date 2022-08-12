@@ -4,6 +4,8 @@ My build of [dwm](https://dwm.suckless.org/). It includes a bunch of patches, pl
 
 ## Patches:
 
+This build includes the following patches:
+
 - alpha
 - attachbottom
 - barpadding
