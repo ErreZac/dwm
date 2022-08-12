@@ -2,7 +2,7 @@
 
 My build of [dwm](https://dwm.suckless.org/). It includes a bunch of patches, plus I did some other tweaks to the code (I somewhat lost track of) to make it all work consistently.
 
-# Patches:
+## Patches:
 
 - alpha
 - attachbottom
@@ -21,10 +21,10 @@ My build of [dwm](https://dwm.suckless.org/). It includes a bunch of patches, pl
 - statuspadding
 - systray
 
-# Colorschemes:
+## Colorschemes:
 
 You can change colorschemes by including headers in colorschemes/ dir.
 
-# Bar
+## Bar
 
 I edited the bar so that you can add outer padding to the bar and systray. It looks good combined with [ibhagwan's picom](https://github.com/ibhagwan/picom) with rounded corners. You can add inner padding (more or less the rounding radius) to the first tag.
