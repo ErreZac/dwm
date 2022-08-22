@@ -121,7 +121,7 @@ static const char *poweroffcmd[] = {"poweroff", NULL };
 static const char *rebootcmd[] = {"reboot", NULL };
 static const char *lockscr[] = { "slock", NULL };
 
-static Keychord keychords[] = {
+static const Keychord keychords[] = {
 	/* modifier                     key        function        argument */
 	{1, {{MODKEY, XK_Return}},                       spawn,          {.v = termcmd } },
 	{1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
@@ -207,7 +207,7 @@ static Keychord keychords[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
+static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
