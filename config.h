@@ -19,7 +19,7 @@ static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=
 static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/catppuccin.h"
+#include "colorthemes/gruvbox.h"
 
 
 static const int vertpad            = 0;       /* vertical padding of bar */
