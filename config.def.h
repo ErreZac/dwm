@@ -39,7 +39,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"/home/zac/Scripts/./sysinfo.sh", NULL,
-	"xrandr", "--output", "eDP-1", "--brightness", ".7", NULL,
+	// "xrandr", "--output", "eDP-1", "--brightness", ".7", NULL,
     "setxkbmap", "-option", "caps:escape", NULL,
 	"nm-applet", NULL,
 	"picom", NULL,
