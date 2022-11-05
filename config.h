@@ -98,7 +98,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *brightup[] = { "asusctl", "-n", NULL };
 static const char *brightdown[] = { "asusctl", "-p", NULL };
-static const char *dmenucmd[] = { "dmenu_run", NULL};
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL};
 static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL };
 static const char *email[] = { "thunderbird", NULL };
 static const char *filebrowser[] = { "st", "-e", "ranger", NULL };
