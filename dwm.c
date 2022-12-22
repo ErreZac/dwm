@@ -1223,16 +1223,26 @@ grabkeys(void)
 {
 	updatenumlockmask();
 	{
-		unsigned int i, k;
+		unsigned int i, j, k;
 		unsigned int modifiers[] = { 0, LockMask, numlockmask, numlockmask|LockMask };
-		KeyCode code;
+		int start, end, skip;
+		KeySym *syms;
 
 		XUngrabKey(dpy, AnyKey, AnyModifier, root);
-		for (i = 0; i < LENGTH(keychords); i++)
-			if ((code = XKeysymToKeycode(dpy, keychords[i].keys[currentkey].keysym)))
-				for (k = 0; k < LENGTH(modifiers); k++)
-					XGrabKey(dpy, code, keychords[i].keys[currentkey].mod | modifiers[k], root,
-						True, GrabModeAsync, GrabModeAsync);
+		XDisplayKeycodes(dpy, &start, &end);
+		syms = XGetKeyboardMapping(dpy, start, end - start + 1, &skip);
+		if (!syms)
+			return;
+		for (k = start; k <= end; k++)
+			for (i = 0; i < LENGTH(keychords); i++)
+				/* skip modifier codes, we do that ourselves */
+				if (keychords[i].keys[currentkey].keysym == syms[(k - start) * skip])
+					for (j = 0; j < LENGTH(modifiers); j++)
+						XGrabKey(dpy, k,
+							 keychords[i].keys[currentkey].mod | modifiers[j],
+							 root, True,
+							 GrabModeAsync, GrabModeAsync);
+		XFree(syms);
 	}
 }
 
