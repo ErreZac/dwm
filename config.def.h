@@ -111,13 +111,13 @@ static const char *octave_shell[] = { "alacritty", "-e", "octave-cli", NULL };
 static const char *poweroffcmd[] = {"poweroff", NULL };
 static const char *rebootcmd[] = {"reboot", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x25", NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-g", "100x25", NULL };
 static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-", "eDP-1", NULL };
 static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "eDP-1", NULL };
 static const char *screen_capture[] = { "scrot", NULL };
 static const char *teams[] = { "teams", NULL };
+static const char *termtmuxcmd[] = { "alacritty", "-e", "tmux", "attach", NULL };
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *termtabcmd[] = { "tabbed", "-c", "-r", "2", "alacritty", "-w", "''", NULL };
 static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *virtualbox[] = { "virtualbox", NULL };
 static const char *web_browser[] = { "brave", NULL };
@@ -125,8 +125,9 @@ static const char *web_browser[] = { "brave", NULL };
 static const Keychord keychords[] = {
 	/* modifier                     key        function        argument */
 	{1, {{MODKEY, XK_Return}},                       spawn,          {.v = termcmd } },
-	{1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
-	{1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
+	{1, {{MODKEY|ShiftMask, XK_Return}},                       spawn,          {.v = termtmuxcmd } },
+	// {1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
+	// {1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
     /* Launch applications */
 	{1, {{MODKEY, XK_space}},                        spawn,          {.v = dmenucmd } },
 	{1, {{MODKEY|ShiftMask, XK_f}},                  spawn,          {.v = filebrowser } },
