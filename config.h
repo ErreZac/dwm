@@ -15,11 +15,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;    /* inner horizontal padding for statusbar */
 static const int vertpadbar         = 8;    /* inner vertical padding for statustbar */
 static const int tagoffset          = 0;
-static const char *fonts[]          = {"Victor Mono Nerd Font:style=Medium:size=18"};
-static const char dmenufont[]       = "Victor Mono Nerd Font:size=20:style:Regular";
+static const char *fonts[]          = {"Droid Sans Mono Nerd Font:style=Medium:size=16"};
+static const char dmenufont[]       = "Droid Sans Mono Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/gruvbox.h"
+#include "colorthemes/onedark.h"
 
 
 static const int vertpad            = 0;       /* vertical padding of bar */
@@ -58,7 +58,8 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 
-static const char *tags[] = { "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ" };
+// static const char *tags[] = { "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 //static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 //static const char *tags[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆", "➇", "➈" };
 
