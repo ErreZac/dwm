@@ -15,8 +15,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;    /* inner horizontal padding for statusbar */
 static const int vertpadbar         = 8;    /* inner vertical padding for statustbar */
 static const int tagoffset          = 0;
-static const char *fonts[]          = {"Droid Sans Mono Nerd Font:style=Medium:size=16"};
-static const char dmenufont[]       = "Droid Sans Mono Nerd Font:size=20:style:Regular";
+static const char *fonts[]          = {"Fira Code Nerd Font:style=Retina:size=18"};
+static const char dmenufont[]       = "Fira Code Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
 #include "colorthemes/onedark.h"
