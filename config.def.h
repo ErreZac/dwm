@@ -19,7 +19,7 @@ static const char *fonts[]          = {"Fira Code Nerd Font:style=Retina:size=18
 static const char dmenufont[]       = "Fira Code Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/catppuccin.h"
+#include "colorthemes/gruvbox.h"
 
 
 static const int vertpad            = 10;       /* vertical padding of bar */
@@ -117,7 +117,6 @@ static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-",
 static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "eDP-1", NULL };
 static const char *screen_capture[] = { "scrot", NULL };
 static const char *teams[] = { "teams", NULL };
-static const char *termtmuxcmd[] = { "st", "-e", "tmux", NULL };
 static const char *termcmd[] = { "st", NULL };
 static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *virtualbox[] = { "virtualbox", NULL };
@@ -126,9 +125,7 @@ static const char *web_browser[] = { "brave", NULL };
 static const Keychord keychords[] = {
 	/* modifier                     key        function        argument */
 	{1, {{MODKEY, XK_Return}},                       spawn,          {.v = termcmd } },
-	{1, {{MODKEY|ShiftMask, XK_Return}},                       spawn,          {.v = termtmuxcmd } },
-	// {1, {{MODKEY|ControlMask, XK_Return}},           spawn,          {.v = termtabcmd } },
-	// {1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
+	{1, {{MODKEY|ShiftMask, XK_Return}},             togglescratch,  {.v = scratchpadcmd } },
     /* Launch applications */
 	{1, {{MODKEY, XK_space}},                        spawn,          {.v = dmenucmd } },
 	{1, {{MODKEY|ShiftMask, XK_f}},                  spawn,          {.v = filebrowser } },
