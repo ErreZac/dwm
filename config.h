@@ -14,16 +14,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;    /* inner horizontal padding for statusbar */
 static const int vertpadbar         = 8;    /* inner vertical padding for statustbar */
-static const int tagoffset          = 20;
+static const int tagoffset          = 0;
 static const char *fonts[]          = {"Fira Code Nerd Font:style=Retina:size=18"};
 static const char dmenufont[]       = "Fira Code Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/gruvbox.h"
+#include "colorthemes/rosepine.h"
 
 
-static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 15;       /* horizontal padding of bar */
+static const int vertpad            = 0;       /* vertical padding of bar */
+static const int sidepad            = 0;       /* horizontal padding of bar */
 
 static const unsigned int baralpha = (0xff);
 static const unsigned int borderalpha = OPAQUE;
@@ -112,15 +112,18 @@ static const char *octave_shell[] = { "st", "-e", "octave-cli", NULL };
 static const char *poweroffcmd[] = {"poweroff", NULL };
 static const char *rebootcmd[] = {"reboot", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x25", NULL };
+// static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x25", NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-T", scratchpadname, NULL };
 static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-", "eDP-1", NULL };
 static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "eDP-1", NULL };
 static const char *screen_capture[] = { "scrot", NULL };
 static const char *teams[] = { "teams", NULL };
-static const char *termcmd[] = { "st", NULL };
+static const char *termcmd[] = { "alacritty", "-e", "tmux", "new", "-As0", NULL };
 static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *virtualbox[] = { "virtualbox", NULL };
 static const char *web_browser[] = { "brave", NULL };
+static const char *cycle_profiles[] = { "/home/zac/.config/sxhkd/scripts/cycle_profiles.sh", NULL };
+static const char *toggle_fan_curve[] = { "/home/zac/.config/sxhkd/scripts/toggle_fan_curve.sh", NULL };
 
 static const Keychord keychords[] = {
 	/* modifier                     key        function        argument */
@@ -148,6 +151,8 @@ static const Keychord keychords[] = {
 	{1, {{MODKEY|ShiftMask|ControlMask, XK_r}},      spawn,          {.v = rebootcmd } },
 	{1, {{MODKEY|ShiftMask|ControlMask, XK_q}},      spawn,          {.v = poweroffcmd } },
 	{1, {{MODKEY|ShiftMask|ControlMask, XK_l}},      spawn,          {.v = lockscr } },
+	{1, {{0, XF86XK_Launch1}},                       spawn,          {.v = cycle_profiles } },
+	{1, {{0, XF86XK_Launch4}},                       spawn,          {.v = toggle_fan_curve } },
 	{1, {{MODKEY, XK_b}},                            togglebar,      {0} },
 	{1, {{MODKEY, XK_j}},                            focusstack,     {.i = +1 } },
 	{1, {{MODKEY, XK_k}},                            focusstack,     {.i = -1 } },
