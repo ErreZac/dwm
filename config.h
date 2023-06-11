@@ -45,6 +45,8 @@ static const char *const autostart[] = {
 	"picom", NULL,
     "nitrogen", "--restore", NULL,
     "pasystray", NULL,
+    "blueman-applet", NULL,
+    "conky", NULL,
 	NULL /* terminate */
 };
 static const unsigned int alphas[][3]      = {
@@ -118,7 +120,8 @@ static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-",
 static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "eDP-1", NULL };
 static const char *screen_capture[] = { "scrot", NULL };
 static const char *teams[] = { "teams", NULL };
-static const char *termcmd[] = { "alacritty", "-e", "tmux", "new", "-As0", NULL };
+// static const char *termcmd[] = { "alacritty", "-e", "tmux", "new", "-As0", NULL };
+static const char *termcmd[] = { "kitty", NULL };
 static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *virtualbox[] = { "virtualbox", NULL };
 static const char *web_browser[] = { "brave", NULL };
