@@ -19,7 +19,7 @@ static const char *fonts[]          = {"Fira Code Nerd Font:style=Retina:size=18
 static const char dmenufont[]       = "Fira Code Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/rosepine.h"
+#include "colorthemes/rosepine_moon.h"
 
 
 static const int vertpad            = 0;       /* vertical padding of bar */
@@ -115,7 +115,7 @@ static const char *octave_shell[] = { "st", "-e", "octave-cli", NULL };
 static const char *poweroffcmd[] = {"poweroff", NULL };
 static const char *rebootcmd[] = {"reboot", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *todolist[] = {"kitty", "-e", "nvim", "/home/zac/.config/conky/todo.md", NULL};
+static const char *todolist[] = {"wezterm", "-e", "nvim", "/home/zac/.config/conky/todo.md", NULL};
 // static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x25", NULL };
 static const char *scratchpadcmd[] = { "alacritty", "-T", scratchpadname, NULL };
 static const char *scrbrightdown[] = { "/home/zac/Scripts/./brightness.sh", "-", "eDP-1", NULL };
@@ -123,8 +123,8 @@ static const char *scrbrightup[] = { "/home/zac/Scripts/./brightness.sh", "+", "
 static const char *screen_capture[] = { "scrot", NULL };
 static const char *teams[] = { "teams", NULL };
 // static const char *termcmd[] = { "alacritty", "-e", "tmux", "new", "-As0", NULL };
-// static const char *termcmd[] = { "kitty", NULL };
-static const char *termcmd[] = { "kitty", NULL };
+// static const char *termcmd[] = { "wezterm", NULL };
+static const char *termcmd[] = { "wezterm", NULL };
 static const char *upvol[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
 static const char *virtualbox[] = { "virtualbox", NULL };
 static const char *web_browser[] = { "brave", NULL };

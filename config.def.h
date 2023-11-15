@@ -19,7 +19,7 @@ static const char *fonts[]          = {"Fira Code Nerd Font:style=Retina:size=18
 static const char dmenufont[]       = "Fira Code Nerd Font:size=20:style:Regular";
 
 /*  Theme */                          //"nord"
-#include "colorthemes/rosepine_dawn.h"
+#include "colorthemes/rosepine_moon.h"
 
 
 static const int vertpad            = 0;       /* vertical padding of bar */
