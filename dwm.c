@@ -193,6 +193,7 @@ static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
 static Monitor *createmon(void);
+static void cyclelayout(const Arg *arg);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
@@ -289,6 +290,8 @@ static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void xinitvisual();
 static void zoom(const Arg *arg);
 static void autostart_exec(void);
+static void bstack(Monitor *m);
+static void bstackhoriz(Monitor *m);
 
 /* variables */
 static Systray *systray =  NULL;
@@ -848,6 +851,22 @@ createmon(void)
 	m->pertag->gappx[0] = gappx[0];
 
 	return m;
+}
+void
+cyclelayout(const Arg *arg) {
+	Layout *l;
+	for(l = (Layout *)layouts; l != selmon->lt[selmon->sellt]; l++);
+	if(arg->i > 0) {
+		if(l->symbol && (l + 1)->symbol)
+			setlayout(&((Arg) { .v = (l + 1) }));
+		else
+			setlayout(&((Arg) { .v = layouts }));
+	} else {
+		if(l != layouts && (l - 1)->symbol)
+			setlayout(&((Arg) { .v = (l - 1) }));
+		else
+			setlayout(&((Arg) { .v = &layouts[LENGTH(layouts) - 2] }));
+	}
 }
 
 void
@@ -3176,4 +3195,78 @@ main(int argc, char *argv[])
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
+}
+
+static void
+bstack(Monitor *m) 
+{
+	int w, h, mh, mx, tx, ty, tw, bw;
+	unsigned int i, n;
+	Client *c;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n == 0)
+		return;
+
+    if (n == 1) {
+        bw = 0;
+    } else {
+        bw = borderpx;
+    }
+
+    if (m->pertag->drawwithgaps[m->pertag->curtag]) { /* draw with fullgaps logic */
+        if (n > m->nmaster) {
+            mh = m->nmaster ? m->mfact * m->wh : 0;
+            tw = m->ww / (n - m->nmaster) - 2*m->pertag->gappx[m->pertag->curtag];
+            ty = m->wy + mh;
+        } else {
+            mh = m->wh - m->pertag->gappx[m->pertag->curtag];
+            tw = m->ww - m->pertag->gappx[m->pertag->curtag];
+            ty = m->wy - m->pertag->gappx[m->pertag->curtag];
+        }
+        for (i = mx = 0, tx = m->wx + m->pertag->gappx[m->pertag->curtag], c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+            if (i < m->nmaster) {
+                w = (m->ww - mx) / (MIN(n, m->nmaster) - i) - m->pertag->gappx[m->pertag->curtag];
+                resize(c, m->wx + mx + m->pertag->gappx[m->pertag->curtag], m->wy + m->pertag->gappx[m->pertag->curtag], w - 2*bw - m->pertag->gappx[m->pertag->curtag] , mh - 2*bw - m->pertag->gappx[m->pertag->curtag] , bw, 0);
+	            if (mx + WIDTH(c) - m->pertag->gappx[m->pertag->curtag] < m->wh)
+                    mx += WIDTH(c) - m->pertag->gappx[m->pertag->curtag];
+            } else {
+                h = m->wh - mh - 2*m->pertag->gappx[m->pertag->curtag];
+                resize(c, tx, ty + m->pertag->gappx[m->pertag->curtag], tw - 2*bw, h - 2*bw, bw, 0);
+                if (tw != m->ww)
+                    tx += WIDTH(c) + 2*m->pertag->gappx[m->pertag->curtag];
+            }
+        }
+	} else { /* draw with singularborders logic */
+    }
+}
+
+static void
+bstackhoriz(Monitor *m) {
+	int w, mh, mx, tx, ty, th;
+	unsigned int i, n;
+	Client *c;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n == 0)
+		return;
+	if (n > m->nmaster) {
+		mh = m->nmaster ? m->mfact * m->wh : 0;
+		th = (m->wh - mh) / (n - m->nmaster);
+		ty = m->wy + mh;
+	} else {
+		th = mh = m->wh;
+		ty = m->wy;
+	}
+	for (i = mx = 0, tx = m->wx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+		if (i < m->nmaster) {
+			w = (m->ww - mx) / (MIN(n, m->nmaster) - i);
+			resize(c, m->wx + mx, m->wy, w - (2 * c->bw), mh - (2 * c->bw), 0, 0);
+			mx += WIDTH(c);
+		} else {
+			resize(c, tx, ty, m->ww - (2 * c->bw), th - (2 * c->bw), 0, 0);
+			if (th != m->wh)
+				ty += HEIGHT(c);
+		}
+	}
 }

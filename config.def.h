@@ -84,9 +84,13 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ " ",      tile },    /* first entry is default */
-	{ " ",      NULL },    /* no layout function means floating behavior */
+	{ "TTT",     bstack },
 	{ "类",      monocle },
+	{ " ",      NULL },    /* no layout function means floating behavior */
+	{ NULL,       NULL },
 };
+
+	// { "===",     bstackhoriz },
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -172,12 +176,12 @@ static const Keychord keychords[] = {
 	{1, {{MODKEY|ControlMask, XK_j}},                movestack,      {.i = +1 } },
 	{1, {{MODKEY|ControlMask, XK_k}},                movestack,      {.i = -1 } },
 	{1, {{MODKEY|ShiftMask|ControlMask, XK_Return}}, zoom,           {0} },
-	{1, {{MODKEY, XK_Tab}},                          view,           {0} },
+	// {1, {{MODKEY, XK_Tab}},                          view,           {0} },
 	{1, {{MODKEY|ShiftMask, XK_c}},                  killclient,     {0} },
 	{1, {{MODKEY|ShiftMask, XK_x}},                  killunsel,      {0} },
-	{1, {{MODKEY, XK_t}},                            setlayout,      {.v = &layouts[0]} },
-	{1, {{MODKEY, XK_f}},                            setlayout,      {.v = &layouts[1]} },
-	{1, {{MODKEY, XK_m}},                            setlayout,      {.v = &layouts[2]} },
+    // {1, {{MODKEY, XK_Tab}},                            setlayout,    {.v = &layouts[next(&lay)]} },
+	{1, {{MODKEY, XK_Tab}},                        cyclelayout,    {.i = +1 } },
+	{1, {{MODKEY|ShiftMask, XK_Tab}},                       cyclelayout,    {.i = -1 } },
 	{1, {{MODKEY|ControlMask, XK_space}},            setlayout,      {0} },
 	{1, {{MODKEY|ShiftMask, XK_space}},              togglefloating, {0} },
 	{1, {{MODKEY, XK_Down}},                         moveresize,     {.v = "0x 25y 0w 0h" } },
